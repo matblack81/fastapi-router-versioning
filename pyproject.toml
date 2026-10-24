@@ -73,7 +73,7 @@ docs = [
 # scripts/docs_screenshots.py: takes the screenshots of the docs in a real browser
 screenshots = [
     "playwright>=1.49.0",
-    "pillow>=11.3.0",
+    "pillow>=13.0.0; python_version >= '3.11'",
     "uvicorn>=0.49.0",
 ]
 
