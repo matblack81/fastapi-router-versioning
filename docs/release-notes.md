@@ -8,6 +8,7 @@
 
 ### Internal
 
+* ⬆ Bump the python-packages group with 9 updates. PR [#123](https://github.com/matblack81/fastapi-router-versioning/pull/123) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump the github-actions group with 4 updates. PR [#122](https://github.com/matblack81/fastapi-router-versioning/pull/122) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump certifi from 2026.6.17 to 2026.10.19. PR [#121](https://github.com/matblack81/fastapi-router-versioning/pull/121) by [@dependabot[bot]](https://github.com/apps/dependabot).
 
