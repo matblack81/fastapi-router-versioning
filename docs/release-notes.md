@@ -6,6 +6,10 @@
 
 * 🔧 Replace old GitHub username in release notes links. PR [#120](https://github.com/matblack81/fastapi-router-versioning/pull/120) by [@matblack81](https://github.com/matblack81).
 
+### Internal
+
+* ⬆ Bump certifi from 2026.6.17 to 2026.10.19. PR [#121](https://github.com/matblack81/fastapi-router-versioning/pull/121) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
 ## 1.2.1 (2026-10-15)
 
 ### Docs
