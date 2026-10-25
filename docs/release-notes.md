@@ -8,6 +8,7 @@
 
 ### Internal
 
+* 👷 Add a weekly CI run against FastAPI master. PR [#127](https://github.com/matblack81/fastapi-router-versioning/pull/127) by [@matblack81](https://github.com/matblack81).
 * 👷 Test against the latest FastAPI release in CI. PR [#126](https://github.com/matblack81/fastapi-router-versioning/pull/126) by [@matblack81](https://github.com/matblack81).
 * ⬆ Bump pillow to 13.0.0 and certifi to 2026.10.23. PR [#125](https://github.com/matblack81/fastapi-router-versioning/pull/125) by [@matblack81](https://github.com/matblack81).
 * ⬆ Bump fastapi from 0.141.1 to 0.143.3. PR [#124](https://github.com/matblack81/fastapi-router-versioning/pull/124) by [@dependabot[bot]](https://github.com/apps/dependabot).
