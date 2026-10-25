@@ -1,0 +1,52 @@
+name: Test FastAPI main
+
+# Early warning, not a gate: runs the suite against FastAPI's development branch so that
+# routing changes show up before they are released. Never runs on pull requests and is not
+# part of any required check.
+on:
+  schedule:
+    # cron every week on monday
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+env:
+  UV_NO_SYNC: true
+
+jobs:
+  test-fastapi-main:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      UV_PYTHON: "3.14"
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 #sync-pin:checkout
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0 #sync-pin:setup-python
+        with:
+          python-version: "3.14"
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v9.0.0 #sync-pin:setup-uv
+        with:
+          # Before upgrading uv version, make sure astral-sh/setup-uv knows its checksum.
+          # See: https://github.com/astral-sh/setup-uv/issues/851#issuecomment-4282017837
+          version: "0.11.18"
+          enable-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
+
+      - name: Install Dependencies
+        run: uv sync
+
+      - name: Install FastAPI from source
+        run: uv pip install -U "git+https://github.com/fastapi/fastapi@master"
+
+      - name: Test
+        run: uv run --no-sync bash scripts/test.sh
