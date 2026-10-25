@@ -12,6 +12,7 @@
 
 ### Internal
 
+* 🔧 Allow the certifi package name in typos. PR [#133](https://github.com/matblack81/fastapi-router-versioning/pull/133) by [@matblack81](https://github.com/matblack81).
 * ✅ Test that nested WebSocket dependencies survive the remount. PR [#131](https://github.com/matblack81/fastapi-router-versioning/pull/131) by [@matblack81](https://github.com/matblack81).
 * 💡 Trim the legacy WebSocket context test docstring. PR [#130](https://github.com/matblack81/fastapi-router-versioning/pull/130) by [@matblack81](https://github.com/matblack81).
 * 👷 Test FastAPI 0.143.0 in CI. PR [#129](https://github.com/matblack81/fastapi-router-versioning/pull/129) by [@matblack81](https://github.com/matblack81).
