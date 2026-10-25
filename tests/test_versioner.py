@@ -3,8 +3,8 @@ from typing import Any
 
 import pytest
 
-from fastapi import APIRouter, FastAPI, HTTPException, Request, Response, WebSocket, WebSocketDisconnect
-from fastapi.routing import APIRoute
+from fastapi import APIRouter, Depends, FastAPI, HTTPException, Request, Response, WebSocket, WebSocketDisconnect
+from fastapi.routing import APIRoute, APIWebSocketRoute
 from fastapi.testclient import TestClient
 
 from fastapi_router_versioning import RouterVersioner, VersionFormat, VersionT, api_version
@@ -93,6 +93,69 @@ def test_websocket_nested_router_prefix_is_preserved() -> None:
     client = TestClient(app)
     with client.websocket_connect("/v1_0/chat/ws") as ws:
         assert ws.receive_text() == "ok"
+
+
+def test_websocket_nested_router_legacy_route_context(monkeypatch: pytest.MonkeyPatch) -> None:
+    """On FastAPI 0.137.2-0.143.0 a nested WebSocket context has an empty path, name and
+    dependencies: the remount must still carry the parent prefix and the router dependencies.
+
+    Simulated by wrapping the real contexts so that WebSocket ones report an empty path, as
+    those releases do; on FastAPI >= 0.143.1 the fallback is otherwise never reached.
+    """
+    import fastapi_router_versioning._compat as compat_module
+
+    real_fn = compat_module._route_contexts_fn
+    if real_fn is None:
+        pytest.skip("iter_route_contexts requires FastAPI >= 0.137.2")  # pragma: no cover
+
+    class LegacyWebSocketContext:
+        path = ""
+
+        def __init__(self, route_ctx: Any) -> None:
+            self.original_route = route_ctx.original_route
+            self._route_context = route_ctx._route_context
+
+    def legacy_route_contexts(routes: list[Any]) -> Any:
+        for route_ctx in real_fn(routes):
+            if isinstance(route_ctx.original_route, APIWebSocketRoute):
+                yield LegacyWebSocketContext(route_ctx)
+            else:
+                yield route_ctx
+
+    monkeypatch.setattr(compat_module, "_route_contexts_fn", legacy_route_contexts)
+
+    calls: list[str] = []
+
+    def record_call() -> None:
+        calls.append("dependency")
+
+    app = FastAPI()
+    ws_router = APIRouter(prefix="/inner", dependencies=[Depends(record_call)])
+
+    @ws_router.websocket("/ws")
+    @api_version((1, 0))
+    async def ws_endpoint(websocket: WebSocket) -> None:
+        await websocket.accept()
+        await websocket.send_text("ok")
+        await websocket.close()
+
+    @ws_router.get("/ping")
+    @api_version((1, 0))
+    def ping() -> dict[str, str]:
+        return {"ping": "pong"}
+
+    parent_router = APIRouter(prefix="/chat")
+    parent_router.include_router(ws_router)
+
+    RouterVersioner(app=app, routers=parent_router, version_format=VersionFormat.SEMVER).versionize()
+
+    client = TestClient(app)
+    with client.websocket_connect("/v1_0/chat/inner/ws") as ws:
+        assert ws.receive_text() == "ok"
+    assert calls == ["dependency"]
+    assert client.get("/v1_0/chat/inner/ping").json() == {"ping": "pong"}
+    with pytest.raises(WebSocketDisconnect):
+        client.websocket_connect("/v1_0/inner/ws").__enter__()
 
 
 def test_unsupported_route_type_raises_error() -> None:
