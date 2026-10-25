@@ -22,12 +22,13 @@ def iter_routes_flat(routes: list[Any]) -> Iterator[Any]:
             # RouteContext merges path/tags/deps via __getattr__; use the context directly.
             yield route_ctx
         elif isinstance(original, APIWebSocketRoute):
-            # For WebSockets, RouteContext.__getattr__ does NOT merge parent prefixes into path.
-            # _route_context._EffectiveRouteContext holds the fully resolved starlette_route
-            # (with all include_router prefixes applied). Fall back to original for direct routes.
-            rc = getattr(route_ctx, "_route_context", None)
-            starlette_route = getattr(rc, "starlette_route", None) if rc is not None else None
-            yield starlette_route if starlette_route is not None else original
+            if route_ctx.path:
+                yield route_ctx
+            else:
+                # FastAPI 0.137.2-0.143.0 resolve a nested WebSocket context to an empty path,
+                # name and dependencies (fixed in 0.143.1). The fully resolved route is only on
+                # the private _route_context; those releases are frozen, so it cannot move.
+                yield route_ctx._route_context.starlette_route
         else:
             yield original  # pragma: no cover
 
