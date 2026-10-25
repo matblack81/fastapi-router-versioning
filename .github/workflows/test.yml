@@ -60,6 +60,9 @@ jobs:
           - python-version: "3.14"
             fastapi-version: "latest"
             coverage: "coverage"
+          # Covers the 0.137.2-0.143.0 band, which takes its own branch in _compat.py.
+          - python-version: "3.14"
+            fastapi-version: "0.143.0"
 
     runs-on: ubuntu-latest
     env:
