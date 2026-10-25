@@ -3,7 +3,19 @@ from typing import Any
 
 import pytest
 
-from fastapi import APIRouter, Depends, FastAPI, HTTPException, Request, Response, WebSocket, WebSocketDisconnect
+from fastapi import (
+    APIRouter,
+    Depends,
+    FastAPI,
+    Header,
+    HTTPException,
+    Request,
+    Response,
+    WebSocket,
+    WebSocketDisconnect,
+    WebSocketException,
+    status,
+)
 from fastapi.routing import APIRoute, APIWebSocketRoute
 from fastapi.testclient import TestClient
 
@@ -152,6 +164,44 @@ def test_websocket_nested_router_legacy_route_context(monkeypatch: pytest.Monkey
     assert client.get("/v1_0/chat/inner/ping").json() == {"ping": "pong"}
     with pytest.raises(WebSocketDisconnect):
         client.websocket_connect("/v1_0/inner/ws").__enter__()
+
+
+def test_websocket_nested_router_dependencies_are_enforced() -> None:
+    """A parent router dependency is often the only authentication a WebSocket has: dropping it
+    on remount would still accept connections, so this asserts a rejection, not only a call."""
+    calls: list[str] = []
+
+    def require_token(x_token: str | None = Header(default=None)) -> None:
+        calls.append("router")
+        if x_token != "secret":
+            raise WebSocketException(code=status.WS_1008_POLICY_VIOLATION)
+
+    def record_route_call() -> None:
+        calls.append("route")
+
+    app = FastAPI()
+    ws_router = APIRouter(prefix="/inner", dependencies=[Depends(require_token)])
+
+    @ws_router.websocket("/ws", dependencies=[Depends(record_route_call)])
+    @api_version((1, 0))
+    async def ws_endpoint(websocket: WebSocket) -> None:
+        await websocket.accept()
+        await websocket.send_text("ok")
+        await websocket.close()
+
+    parent_router = APIRouter(prefix="/chat")
+    parent_router.include_router(ws_router)
+
+    RouterVersioner(app=app, routers=parent_router, version_format=VersionFormat.SEMVER).versionize()
+
+    client = TestClient(app)
+    with client.websocket_connect("/v1_0/chat/inner/ws", headers={"x-token": "secret"}) as ws:
+        assert ws.receive_text() == "ok"
+    assert calls == ["router", "route"]
+
+    with pytest.raises(WebSocketDisconnect) as exc_info:
+        client.websocket_connect("/v1_0/chat/inner/ws").__enter__()
+    assert exc_info.value.code == status.WS_1008_POLICY_VIOLATION
 
 
 def test_unsupported_route_type_raises_error() -> None:
