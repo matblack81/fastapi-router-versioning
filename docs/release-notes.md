@@ -2,6 +2,8 @@
 
 ## Latest Changes
 
+## 1.2.2 (2026-10-25)
+
 ### Refactors
 
 * ♻️ Use FastAPI's public route context for nested WebSockets. PR [#128](https://github.com/matblack81/fastapi-router-versioning/pull/128) by [@matblack81](https://github.com/matblack81).
