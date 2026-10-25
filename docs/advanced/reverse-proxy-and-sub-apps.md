@@ -4,8 +4,8 @@ description: How root_path is handled behind a proxy and when mounting sub-appli
 
 # Reverse proxy and sub-apps
 
-The ASGI `root_path` FastAPI sets when an app runs behind a proxy or is mounted with
-`app.mount()` is picked up automatically in every per-version doc URL:
+The ASGI `root_path`, set by the server behind a proxy (`--root-path`) or by `app.mount()`,
+is picked up automatically in every per-version doc URL:
 
 ```python
 --8<-- "docs_src/advanced/reverse_proxy.py:snippet"
