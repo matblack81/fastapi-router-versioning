@@ -12,6 +12,7 @@
 
 ### Internal
 
+* 💡 Trim the legacy WebSocket context test docstring. PR [#130](https://github.com/matblack81/fastapi-router-versioning/pull/130) by [@matblack81](https://github.com/matblack81).
 * 👷 Test FastAPI 0.143.0 in CI. PR [#129](https://github.com/matblack81/fastapi-router-versioning/pull/129) by [@matblack81](https://github.com/matblack81).
 * 👷 Add a weekly CI run against FastAPI master. PR [#127](https://github.com/matblack81/fastapi-router-versioning/pull/127) by [@matblack81](https://github.com/matblack81).
 * 👷 Test against the latest FastAPI release in CI. PR [#126](https://github.com/matblack81/fastapi-router-versioning/pull/126) by [@matblack81](https://github.com/matblack81).
