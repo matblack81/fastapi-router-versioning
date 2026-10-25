@@ -96,12 +96,8 @@ def test_websocket_nested_router_prefix_is_preserved() -> None:
 
 
 def test_websocket_nested_router_legacy_route_context(monkeypatch: pytest.MonkeyPatch) -> None:
-    """On FastAPI 0.137.2-0.143.0 a nested WebSocket context has an empty path, name and
-    dependencies: the remount must still carry the parent prefix and the router dependencies.
-
-    Simulated by wrapping the real contexts so that WebSocket ones report an empty path, as
-    those releases do; on FastAPI >= 0.143.1 the fallback is otherwise never reached.
-    """
+    """Simulates the route contexts of FastAPI 0.137.2-0.143.0: the fallback for them runs on
+    no version the coverage job installs."""
     import fastapi_router_versioning._compat as compat_module
 
     real_fn = compat_module._route_contexts_fn
