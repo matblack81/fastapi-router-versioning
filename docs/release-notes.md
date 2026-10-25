@@ -4,6 +4,7 @@
 
 ### Docs
 
+* 📝 Link FastAPI's Behind a Proxy guide from the reverse proxy page. PR [#135](https://github.com/matblack81/fastapi-router-versioning/pull/135) by [@matblack81](https://github.com/matblack81).
 * 📝 Say who sets root_path on the reverse proxy page. PR [#134](https://github.com/matblack81/fastapi-router-versioning/pull/134) by [@matblack81](https://github.com/matblack81).
 
 ## 1.2.2 (2026-10-25)
