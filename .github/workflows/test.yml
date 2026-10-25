@@ -99,6 +99,11 @@ jobs:
         if: matrix.fastapi-version != 'latest'
         run: uv pip install "fastapi==${{ matrix.fastapi-version }}"
 
+      # Without this, "latest" is whatever uv.lock pins, and only moves when Dependabot does.
+      - name: Upgrade to the latest FastAPI
+        if: matrix.fastapi-version == 'latest'
+        run: uv pip install -U fastapi
+
       - name: Prepare coverage dir
         run: mkdir coverage
 
