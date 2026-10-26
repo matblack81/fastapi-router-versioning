@@ -5,8 +5,8 @@ name: Test FastAPI main
 # part of any required check.
 on:
   schedule:
-    # cron every week on monday
-    - cron: "0 0 * * 1"
+    # cron every day: FastAPI often releases what lands on master within hours
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 permissions: {}
