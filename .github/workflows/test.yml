@@ -96,7 +96,7 @@ jobs:
             uv.lock
 
       - name: Install Dependencies
-        run: uv sync
+        run: uv sync --no-dev --group tests
 
       - name: Override FastAPI version
         if: matrix.fastapi-version != 'latest'
@@ -189,7 +189,7 @@ jobs:
         working-directory: base
         run: |
           git apply "$RUNNER_TEMP/tests.patch"
-          uv sync --locked
+          uv sync --locked --no-dev --group tests
           set +e
           xargs -0 uv run --no-sync pytest -- < "$RUNNER_TEMP/changed-tests"
           status=$?
@@ -230,7 +230,7 @@ jobs:
             uv.lock
 
       - name: Install Dependencies
-        run: uv sync --locked
+        run: uv sync --locked --no-dev --group tests
 
       - name: Get coverage files
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.1 #sync-pin:download-artifact

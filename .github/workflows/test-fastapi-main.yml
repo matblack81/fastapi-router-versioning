@@ -43,7 +43,7 @@ jobs:
             uv.lock
 
       - name: Install Dependencies
-        run: uv sync
+        run: uv sync --no-dev --group tests
 
       - name: Install FastAPI from source
         run: uv pip install -U "git+https://github.com/fastapi/fastapi@master"
