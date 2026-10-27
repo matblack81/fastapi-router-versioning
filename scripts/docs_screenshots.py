@@ -63,8 +63,8 @@ SHOTS = [
 
 def load_app(relative: str) -> Any:
     spec = importlib.util.spec_from_file_location(f"shot_{relative.replace('/', '_')}", ROOT / relative)
-    assert spec is not None
-    assert spec.loader is not None
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot load {relative}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module.app

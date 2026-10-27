@@ -28,8 +28,9 @@ ICO_SIZES = (16, 32, 48)
 def square(favicon_svg: str) -> str:
     """The favicon without rounded corners, for iOS, which rounds them itself, and a little
     smaller inside, so the symbol doesn't touch the edge once it does."""
-    assert 'rx="14"' in favicon_svg
-    assert "scale(1.25)" in favicon_svg
+    for expected in (' rx="14"', "scale(1.25)"):
+        if expected not in favicon_svg:
+            raise RuntimeError(f"favicon.svg no longer contains {expected!r}: update square() to match it")
     return favicon_svg.replace(' rx="14"', "").replace("scale(1.25)", "scale(1.1)")
 
 
