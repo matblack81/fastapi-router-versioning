@@ -1,14 +1,14 @@
 """Regenerates the screenshots of docs/assets/screenshots/ from the apps the pages describe.
 
-    uv run --group screenshots python scripts/docs_screenshots.py --channel chrome
-    uv run --group screenshots python scripts/docs_screenshots.py --only swagger-v1 redoc-v2
+    uv run python scripts/docs_screenshots.py --channel chrome
+    uv run python scripts/docs_screenshots.py --only swagger-v1 redoc-v2
 
 Each screenshot is taken in a real browser, from an app that runs locally: the files of docs_src/
 that the pages include, and the apps of examples/. Swagger UI and ReDoc load their scripts from a
 CDN, so the machine needs network access.
 
 --channel chrome (or msedge) uses the browser already installed. Without it, Playwright uses its
-own Chromium, installed once with `uv run --group screenshots playwright install chromium`.
+own Chromium, installed once with `uv run playwright install chromium`.
 """
 
 import argparse
