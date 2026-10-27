@@ -1,6 +1,6 @@
 """Builds the raster icons of docs/assets/images/ from the SVG logo.
 
-    uv run --group screenshots python scripts/build_icons.py --channel chrome
+    uv run python scripts/build_icons.py --channel chrome
 
 The SVG files are the source: logo.svg, favicon.svg (the logo redrawn for small sizes) and
 logo-header.svg are edited by hand. This script produces favicon.ico (16, 32 and 48 px),
