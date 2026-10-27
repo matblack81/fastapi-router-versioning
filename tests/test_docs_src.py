@@ -15,7 +15,8 @@ SNIPPETS = sorted(DOCS_SRC.rglob("*.py"))
 
 # For each docs_src file: every version's schema, its paths, and whether each operation is
 # deprecated. Only what the package decides, so it holds across the whole FastAPI matrix.
-# Regenerate with `pytest tests/test_docs_src.py --inline-snapshot=fix` and read the diff.
+# Regenerate with `pytest tests/test_docs_src.py --fix` and read the diff:
+# `--inline-snapshot=fix` alone corrects existing entries but doesn't add a new file's.
 SCHEMAS = snapshot(
     {
         "advanced/callback_hook": {
