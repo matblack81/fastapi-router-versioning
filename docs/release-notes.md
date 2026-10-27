@@ -9,6 +9,7 @@
 
 ### Internal
 
+* ✅ Snapshot the routes and deprecations of every docs example. PR [#141](https://github.com/matblack81/fastapi-router-versioning/pull/141) by [@matblack81](https://github.com/matblack81).
 * 🔨 Simplify the run commands in the screenshot and icon scripts. PR [#140](https://github.com/matblack81/fastapi-router-versioning/pull/140) by [@matblack81](https://github.com/matblack81).
 * 🔥 Remove the leftover sync-pin markers from the workflows. PR [#139](https://github.com/matblack81/fastapi-router-versioning/pull/139) by [@matblack81](https://github.com/matblack81).
 * 👷 Install only the tests dependency group in the test workflows. PR [#138](https://github.com/matblack81/fastapi-router-versioning/pull/138) by [@matblack81](https://github.com/matblack81).
