@@ -39,14 +39,14 @@ jobs:
           mkdir ./site
       # Build Docs is skipped when nothing that goes into the site changed: it uploads no artifact,
       # the download below finds nothing, and the steps that need ./site/ are skipped
-      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.1 #sync-pin:download-artifact-2
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           path: ./site/
           pattern: docs-site
           merge-multiple: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
-      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0 #sync-pin:upload-pages-artifact
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         # hashFiles returns an empty string if there are no files
         if: hashFiles('./site/*')
         with:
@@ -55,4 +55,4 @@ jobs:
         # hashFiles returns an empty string if there are no files
         if: hashFiles('./site/*')
         id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1 #sync-pin:deploy-pages
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
