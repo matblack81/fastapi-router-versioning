@@ -9,6 +9,7 @@
 
 ### Internal
 
+* 👷 Install only the tests dependency group in the test workflows. PR [#138](https://github.com/matblack81/fastapi-router-versioning/pull/138) by [@matblack81](https://github.com/matblack81).
 * 🔧 Split the dev dependencies into tests, docs and screenshots groups. PR [#137](https://github.com/matblack81/fastapi-router-versioning/pull/137) by [@matblack81](https://github.com/matblack81).
 * 👷 Run the FastAPI master workflow daily. PR [#136](https://github.com/matblack81/fastapi-router-versioning/pull/136) by [@matblack81](https://github.com/matblack81).
 
