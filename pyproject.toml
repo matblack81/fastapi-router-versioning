@@ -153,6 +153,10 @@ known-third-party = ["fastapi", "pydantic", "starlette"]
 [tool.ruff.lint.pyupgrade]
 keep-runtime-typing = true
 
+[tool.inline-snapshot]
+# Snapshots that --inline-snapshot=fix rewrites come out already formatted.
+format-command = "ruff format --stdin-filename {filename}"
+
 [tool.typos.default.extend-identifiers]
 alls = "alls"
 certifi = "certifi"
