@@ -9,6 +9,7 @@
 
 ### Internal
 
+* 🔨 Keep the icon and screenshot script checks under python -O. PR [#142](https://github.com/matblack81/fastapi-router-versioning/pull/142) by [@matblack81](https://github.com/matblack81).
 * ✅ Snapshot the routes and deprecations of every docs example. PR [#141](https://github.com/matblack81/fastapi-router-versioning/pull/141) by [@matblack81](https://github.com/matblack81).
 * 🔨 Simplify the run commands in the screenshot and icon scripts. PR [#140](https://github.com/matblack81/fastapi-router-versioning/pull/140) by [@matblack81](https://github.com/matblack81).
 * 🔥 Remove the leftover sync-pin markers from the workflows. PR [#139](https://github.com/matblack81/fastapi-router-versioning/pull/139) by [@matblack81](https://github.com/matblack81).
