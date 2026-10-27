@@ -44,23 +44,30 @@ Changelog = "https://fastapi-router-versioning.matblack81.com/release-notes/"
 
 [dependency-groups]
 dev = [
-    "httpx>=0.28.1",
-    "httpx2>=0.28.0",
+    { include-group = "tests" },
+    { include-group = "docs" },
+    { include-group = "screenshots" },
     "ruff>=0.14.0",
-    "pytest>=9.1.0",
-    "pytest-asyncio>=1.3.0",
-    "pytest-dotenv>=0.5.2",
     "mypy>=1.17.0",
-    "coverage[toml]>=7.14.1",
-    "inline-snapshot >=0.21.1",
-    "prek >=0.2.22",
     "ty>=0.0.28",
     "pyrefly>=0.60.0",
-    "typer>=0.15.0",
-    "uvicorn>=0.49.0",
+    "prek >=0.2.22",
     "zizmor>=1.0.0",
-    "fastapi-validation-override>=0.2.0",
+    "uvicorn>=0.49.0",
+]
+
+# Everything the test suite imports, so CI can install it alone with --no-dev --group tests:
+# typer for scripts/prepare_release.py, jinja2 and fastapi-validation-override for examples/.
+tests = [
+    "httpx>=0.28.1",
+    "httpx2>=0.28.0",
+    "pytest>=9.1.0",
+    "pytest-asyncio>=1.3.0",
+    "coverage[toml]>=7.14.1",
+    "inline-snapshot >=0.21.1",
+    "typer>=0.15.0",
     "jinja2>=3.1.0",
+    "fastapi-validation-override>=0.2.0",
 ]
 
 docs = [
