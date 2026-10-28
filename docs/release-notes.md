@@ -9,6 +9,7 @@
 
 ### Internal
 
+* ⬆ Bump the github-actions group with 2 updates. PR [#144](https://github.com/matblack81/fastapi-router-versioning/pull/144) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * 💡 Fix the snapshot regeneration command for new examples. PR [#143](https://github.com/matblack81/fastapi-router-versioning/pull/143) by [@matblack81](https://github.com/matblack81).
 * 🔨 Keep the icon and screenshot script checks under python -O. PR [#142](https://github.com/matblack81/fastapi-router-versioning/pull/142) by [@matblack81](https://github.com/matblack81).
 * ✅ Snapshot the routes and deprecations of every docs example. PR [#141](https://github.com/matblack81/fastapi-router-versioning/pull/141) by [@matblack81](https://github.com/matblack81).
