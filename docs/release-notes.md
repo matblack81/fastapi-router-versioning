@@ -9,6 +9,7 @@
 
 ### Internal
 
+* ⬆ Bump FastAPI to 0.162.0. PR [#147](https://github.com/matblack81/fastapi-router-versioning/pull/147) by [@matblack81](https://github.com/matblack81).
 * ⬆ Bump fastapi from 0.143.3 to 0.159.1. PR [#146](https://github.com/matblack81/fastapi-router-versioning/pull/146) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump the python-packages group with 3 updates. PR [#145](https://github.com/matblack81/fastapi-router-versioning/pull/145) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump the github-actions group with 2 updates. PR [#144](https://github.com/matblack81/fastapi-router-versioning/pull/144) by [@dependabot[bot]](https://github.com/apps/dependabot).
