@@ -4,7 +4,7 @@ auto-labels:
     - docs/**
     - docs_src/**
     - examples/**
-    - mkdocs.yml
+    - zensical.toml
     - overrides/**
   internal:
     - .github/**
