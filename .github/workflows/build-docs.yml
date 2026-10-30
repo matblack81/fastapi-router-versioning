@@ -34,7 +34,7 @@ jobs:
               - docs_src/**
               - examples/**
               - fastapi_router_versioning/**
-              - mkdocs.yml
+              - zensical.toml
               - overrides/**
               - scripts/docs-build.sh
               - pyproject.toml
