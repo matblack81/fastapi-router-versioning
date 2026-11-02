@@ -1,6 +1,6 @@
 from ._versions import VersionFormat, VersionInfo, VersionT, api_version
 from .versioner import RouterVersioner
 
-__version__ = "1.2.3"
+__version__ = "1.2.4"
 
 __all__ = ["RouterVersioner", "api_version", "VersionFormat", "VersionInfo", "VersionT"]
