@@ -2,6 +2,8 @@
 
 ## Latest Changes
 
+## 1.2.4 (2026-11-02)
+
 ### Internal
 
 * 🔧 Add keywords to the package metadata and drop the license classifier. PR [#155](https://github.com/matblack81/fastapi-router-versioning/pull/155) by [@matblack81](https://github.com/matblack81).
