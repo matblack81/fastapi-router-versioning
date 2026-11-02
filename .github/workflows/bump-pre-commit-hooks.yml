@@ -34,7 +34,7 @@ jobs:
             pyproject.toml
             uv.lock
       - name: Bump pre-commit hooks
-        run: uv run prek auto-update --freeze --cooldown-days 7
+        run: uv run prek update --freeze --cooldown-days 7
       - name: Create pull request
         env:
           GH_TOKEN: ${{ secrets.FASTAPI_ROUTER_VERSIONING_LATEST_CHANGES }}
@@ -58,7 +58,7 @@ jobs:
               --base "$BASE_BRANCH" \
               --head "$branch" \
               --title "⬆ Bump pre-commit hooks" \
-              --body "Bump pre-commit hook versions via \`prek auto-update --freeze --cooldown-days 7\`." \
+              --body "Bump pre-commit hook versions via \`prek update --freeze --cooldown-days 7\`." \
               --label internal \
               --label dependencies \
               --label pre-commit
