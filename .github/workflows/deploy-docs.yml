@@ -46,13 +46,18 @@ jobs:
           merge-multiple: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
+      # Artifacts stay on the run across attempts: without the attempt in the name, a re-run adds a
+      # second "github-pages" artifact and deploy-pages stops because it finds more than one
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         # hashFiles returns an empty string if there are no files
         if: hashFiles('./site/*')
         with:
+          name: github-pages-${{ github.run_attempt }}
           path: site
       - name: Deploy to GitHub Pages
         # hashFiles returns an empty string if there are no files
         if: hashFiles('./site/*')
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
