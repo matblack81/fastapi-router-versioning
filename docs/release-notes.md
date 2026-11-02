@@ -4,6 +4,7 @@
 
 ### Internal
 
+* 🔧 Add keywords to the package metadata and drop the license classifier. PR [#155](https://github.com/matblack81/fastapi-router-versioning/pull/155) by [@matblack81](https://github.com/matblack81).
 * 🐛 Fix re-runs of the Deploy Docs workflow. PR [#154](https://github.com/matblack81/fastapi-router-versioning/pull/154) by [@matblack81](https://github.com/matblack81).
 
 ## 1.2.3 (2026-11-02)
