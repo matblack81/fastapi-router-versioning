@@ -10,6 +10,7 @@
 
 ### Internal
 
+* 🐛 Fix the pre-commit hooks bump workflow after the prek command rename. PR [#151](https://github.com/matblack81/fastapi-router-versioning/pull/151) by [@matblack81](https://github.com/matblack81).
 * ⬆ Bump the github-actions group with 2 updates. PR [#150](https://github.com/matblack81/fastapi-router-versioning/pull/150) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump the python-packages group with 3 updates. PR [#149](https://github.com/matblack81/fastapi-router-versioning/pull/149) by [@dependabot[bot]](https://github.com/apps/dependabot).
 * ⬆ Bump FastAPI to 0.162.0. PR [#147](https://github.com/matblack81/fastapi-router-versioning/pull/147) by [@matblack81](https://github.com/matblack81).
