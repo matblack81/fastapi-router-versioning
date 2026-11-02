@@ -2,6 +2,10 @@
 
 ## Latest Changes
 
+### Internal
+
+* 🐛 Fix re-runs of the Deploy Docs workflow. PR [#154](https://github.com/matblack81/fastapi-router-versioning/pull/154) by [@matblack81](https://github.com/matblack81).
+
 ## 1.2.3 (2026-11-02)
 
 ### Docs
