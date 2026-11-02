@@ -2,6 +2,8 @@
 
 ## Latest Changes
 
+## 1.2.3 (2026-11-02)
+
 ### Docs
 
 * 🔧 Move the site configuration from mkdocs.yml to zensical.toml. PR [#148](https://github.com/matblack81/fastapi-router-versioning/pull/148) by [@matblack81](https://github.com/matblack81).
