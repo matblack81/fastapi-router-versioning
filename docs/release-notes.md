@@ -2,6 +2,10 @@
 
 ## Latest Changes
 
+### Internal
+
+* ⬆ Bump opentelemetry-api from 1.45.1 to 1.45.2. PR [#157](https://github.com/matblack81/fastapi-router-versioning/pull/157) by [@dependabot[bot]](https://github.com/apps/dependabot).
+
 ## 1.2.4 (2026-11-02)
 
 ### Internal
